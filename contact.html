@@ -89,9 +89,9 @@
     </div>
 
     <div class="contact-container">
-        <form id="contact-form" class="glass-card contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
+        <form name="contact" method="POST" data-netlify="true" class="glass-card contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
             <button type="submit" class="contact-btn">Submit</button>
         </form>
     </div>
@@ -99,8 +99,6 @@
 </div>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
