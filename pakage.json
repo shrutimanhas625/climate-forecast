@@ -1,0 +1,7 @@
+{
+  "name": "weather-app",
+  "version": "0.1",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

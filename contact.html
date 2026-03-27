@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+
+<style>
+
+/* Center content nicely */
+#app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Bigger header */
+.header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Form container */
+.contact-container {
+    padding: 20px 24px;
+}
+
+/* Form styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+/* Inputs bigger + clean */
+.contact-form input {
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+/* Placeholder */
+.contact-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Button styling */
+.contact-btn {
+    padding: 18px;
+    border-radius: 16px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.contact-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.03);
+}
+
+</style>
+
+</head>
+
+<body>
+<div id="app-container">
+
+    <div class="header">
+        <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-container">
+        <form id="contact-form" class="glass-card contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <button type="submit" class="contact-btn">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    const res = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email })
+    });
+
+    const data = await res.json();
+    alert(data.message);
+});
+</script>
+
+</body>
+</html>
