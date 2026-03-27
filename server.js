@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("YOUR_MONGODB_ATLAS_URI")
+mongoose.connect("mongodb+srv://shruti:12shruti@shruti.icisgp9.mongodb.net/?appName=Shruti")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
