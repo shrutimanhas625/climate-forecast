@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://shruti:12shruti@shruti.icisgp9.mongodb.net/?appName=Shruti")
+mongoose.connect("mongodb+srv://shruti:12shruti@shruti.icisgp9.mongodb.net/contactDB?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
@@ -21,6 +21,9 @@ const MessageSchema = new mongoose.Schema({
 const Message = mongoose.model("Message", MessageSchema);
 
 // Route
+app.get("/", (req, res) => {
+    res.send("Server is running 🚀");
+});
 app.post("/contact", async (req, res) => {
     try {
         const newMessage = new Message(req.body);
